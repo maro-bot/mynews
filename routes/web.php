@@ -38,4 +38,17 @@ Route::group(['prefix' => 'admin'], function() {
 //12章課題3
     Route::get('profile/edit','Admin\ProfileController@edit')->middleware('auth');
 
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+        Route::get('news/create','Admin\NewsController@add');
+        Route::post('news/create', 'Admin\NewsController@create');
+    });
+//13課題3
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+        Route::get('profile/create','Admin\ProfileController@add');
+        Route::post('profile/create','Admin\ProfileController@create');
+//13課題4
+        Route::post('profile/edit','Admin\ProfileController@update');
+    });
+
+    
 });
