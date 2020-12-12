@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+//});
 
 
 Auth::routes();
@@ -28,8 +28,6 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::get('news/edit', 'Admin\NewsController@edit');
     Route::post('news/edit', 'Admin\NewsController@update');
     Route::get('news/delete', 'Admin\NewsController@delete');
-    
-    
     // profileのルーティング
     Route::get('profile/create','Admin\ProfileController@add');
     Route::post('profile/create','Admin\ProfileController@create');
@@ -38,3 +36,6 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::get('profile/delete', 'Admin\ProfileController@delete');
     Route::get('profile', 'Admin\ProfileController@index');
 });
+Route::get('/','NewsController@index');
+Route::get('/profile', 'ProfileController@index');
+
